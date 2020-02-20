@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden">
     <header>
-      
+      <!--  -->
       <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center">
         <label for="menu-toggle" class="pt-2 pl-8">
         </label>
