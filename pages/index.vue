@@ -1,31 +1,13 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        citl
-      </h1>
-      <h2 class="subtitle">
-        website
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <body class="bg-gray-300">
+    <div class=" bg-gray-300 flex flex-row items-center justify-between px-8 h-20 border-b border-gray-600">
+      <span class="text-4xl italic">Latest Activities</span>
+      <div>
+        <input type="text" placeholder="Search.." class=" shadow-sm rounded text-sm px-2 py-1">
+        <button class="bg-white rounded-md ml-5 text-sm italic px-2 py-1 border border-gray-600+">Go</button>
       </div>
     </div>
-  </div>
+  </body>
 </template>
 
 <script>
