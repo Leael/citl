@@ -2,16 +2,15 @@
   <div class="overflow-hidden">
     <header>
       <!--  -->
-      <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center">
-        <label for="menu-toggle" class="pt-2 pl-8">
-        </label>
+      <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center justify-between px-6">
+       
         <span class="pl-6">
           <span class=" text-blue-700">C</span>ENTER FOR 
           <span class=" text-blue-700">I</span>NNOVATIVE
           <span class=" text-blue-700">T</span>EACHING AND 
           <span class=" text-blue-700">L</span>EARNING
         </span>
-        <a v-if="false" href="/" class="text-2xl font-bold text-white">HOME</a>
+        <a v-if="true" href="/" class="text-2xl font-bold text-white">HOME</a>
       </div>      
       <!--<div class="px-8 w-64 h-auto bg-gray-800 text-3xl font-bold text-white flex justify-between items-center">
         <h1>sdfbds</h1>

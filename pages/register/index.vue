@@ -7,38 +7,46 @@
     <div class="relative overflow-hidden">
       <div class="h-full w-full overflow-hidden">
         <img class="h-full w-full inline-block" src="@/assets/img/background.svg" alt="Background">
-        <div class="absolute inset-0 h-full w-full">
-          <span class="text-3xl italic font-bold flex justify-end pr-20 pt-8">ADMIN REGISTRATION</span>
-          <div class="">      
-              <div class="flex flex-col w-full">
-                <div class="flex justify-end pr-24 pt-1">
-                  <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    <div class="mb-4 flex items-center">
-                      <span class="block text-gray-700 text-sm font-bold mr-12">
-                        Username
-                      </span>
-                      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
-                    </div>
-                    <div class="mb-6">
-                      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                        Password
-                      </label>
-                      <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
-                      <p class="text-red-500 text-xs italic">Please choose a password.</p>
-                    </div>
-                    <div class="flex items-center justify-between">
-                      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                        Sign In
-                      </button>
-                      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                        Forgot Password?
-                      </a>
-                    </div>
-                  </form>
+        <div class="absolute inset-0 h-full w-full ">
+          <div class="flex flex-col mx-24">
+            <span class="text-3xl italic font-bold flex justify-end pr-12 pt-8">ADMIN REGISTRATION</span>     
+                <div class="flex flex-col w-full">
+                  <div class="flex justify-end mt-1">
+                    <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                      <div class="mb-4 flex items-center justify-between">
+                        <span class="block text-gray-700 text-sm font-bold mr-12">Name:</span>
+                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text">
+                      </div>
+                      <div class="mb-4 flex items-center justify-between">  
+                        <span class="block text-gray-700 text-sm font-bold mr-12">Email:</span>
+                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text">
+                      </div>
+                      <div class="mb-4 flex items-center justify-between">
+                        <span class="block text-gray-700 text-sm font-bold mr-12">Username:</span>
+                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
+                      </div>
+                      <div class="mb-4 flex items-center justify-between">
+                        <span class="block text-gray-700 text-sm font-bold mr-12">Password:</span>
+                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password1" type="password">
+                      </div>
+                      <div class="mb-4 flex items-center justify-between">
+                        <span class="block text-gray-700 text-sm font-bold mr-12">Confirm Password:</span>
+                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password2" type="password">
+                      </div>
+                      <div>
+                        <p class="txt">Already have an account? <nuxt-link to="/" class="reg">Login</nuxt-link> </p>
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                          Sign In
+                        </button>
+                        <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                          Forgot Password?
+                        </a>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </div>
-      
-
           </div>
         </div>
       </div>
@@ -56,3 +64,21 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ .txt {
+  width: 200px;
+  height: 30px;
+  margin-top: px;
+  margin-left: 70px;
+  font-family: Poppins;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+ }
+
+ .reg{
+   color: #D84141;
+ }
+</style>
