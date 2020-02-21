@@ -19,7 +19,7 @@
                       </div>
                       <div class="mb-4 flex items-center justify-between">  
                         <span class="block text-gray-700 text-sm font-bold mr-12">Email:</span>
-                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text">
+                        <input v-model="email" class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text">
                       </div>
                       <div class="mb-4 flex items-center justify-between">
                         <span class="block text-gray-700 text-sm font-bold mr-12">Username:</span>
@@ -27,7 +27,7 @@
                       </div>
                       <div class="mb-4 flex items-center justify-between">
                         <span class="block text-gray-700 text-sm font-bold mr-12">Password:</span>
-                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password1" type="password">
+                        <input v-model="password" class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password1" type="password">
                       </div>
                       <div class="mb-4 flex items-center justify-between">
                         <span class="block text-gray-700 text-sm font-bold mr-12">Confirm Password:</span>
@@ -37,7 +37,7 @@
                         <p class="txt">Already have an account?  </p><nuxt-link to="/login" class="reg txt1">Login</nuxt-link>
                       </div>
                       <div class="flex items-center justify-between">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        <button @click="create_user" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                           Create Account
                         </button>
                         <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
@@ -55,12 +55,44 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+import "firebase/auth"
 export default {
   layout: "admin",
   data() {
     return {
-      show: false
+      show: false,
+      email: "",
+      password: ""
     }
+  },
+  methods: {
+    check_user() {
+      firebase.auth().onAuthStateChanged(function(user){
+        if(user){
+          console.log("naay user")
+        }
+        else{
+          console.log("walay user")
+        }
+      })
+    },
+    create_user(){
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(function() {
+        console.log("success")
+      }).catch(function(err){
+        console.log(err.message);
+      }
+      )
+    },
+    logout_user(){
+      firebase.auth().signOut().then(function(){
+        console.log("nalogout na")
+      })
+    }
+  },
+  created(){
+    this.check_user();
   }
 }
 </script>

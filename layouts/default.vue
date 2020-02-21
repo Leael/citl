@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <!--  -->
-    <!--  -->
-    <header>
-      
-      <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center">
+  <div class="pop">
+    <header>      
+      <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center justify-between px-6">
+        <div class="flex">
         <label for="menu-toggle" class="pt-2 pl-8"> 
           <svg width="57" height="42" viewBox="0 0 57 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d)">
@@ -53,18 +51,28 @@
           <span class=" text-blue-700">T</span>EACHING AND 
           <span class=" text-blue-700">L</span>EARNING
         </span>
-        <a v-if="false" href="/" class="text-2xl font-bold text-white">HOME</a>
+        </div>
+        <div>
+        <a v-if="false" href="/" class="text-2xl font-bold text-white hover:text-blue-900">Home</a>
+        <a @click="logout_user" v-if="true" class="text-2xl font-bold text-white hover:text-blue-900 cursor-pointer">Logout</a>
+
+        </div>
       </div>      
       <!--<div class="px-8 w-64 h-auto bg-gray-800 text-3xl font-bold text-white flex justify-between items-center">
         <h1>sdfbds</h1>
       </div>-->
       
     </header>
-    <nuxt />
+    <div class="h-screen overflow-hidden">
+
+    <nuxt class="" />
+    </div>
   </div>
 </template>
 
 <script>
+import firebase from 'firebase'
+import 'firebase/auth'
 export default {
   data() {
     return {      
@@ -80,10 +88,21 @@ export default {
         
       ]
     }
+  },
+  methods: {
+    logout_user(){
+      firebase.auth().signOut().then(function(){
+        window.location.pathname = '/login'
+        console.log("logout")
+      })
+    }
   }
 }
 </script>
 <style>
+  .pop {
+    font-family: 'poppins'
+  }
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
