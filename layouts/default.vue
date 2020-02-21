@@ -67,8 +67,18 @@
 <script>
 export default {
   data() {
+    return {      
+    }
+  },
+  head(){
     return {
-      
+      link:[
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css?family=Poppins&display=swap"
+        }
+        
+      ]
     }
   }
 }

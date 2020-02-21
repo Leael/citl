@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-hidden">
+  <div class="overflow-hidden pop">
     <header>
       <!--  -->
       <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center justify-between px-6">
@@ -30,10 +30,24 @@ export default {
     return {
       
     }
+  },
+  head(){
+    return {
+      link:[
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css?family=Poppins&display=swap"
+        }
+        
+      ]
+    }
   }
 }
 </script>
 <style>
+  .pop {
+    font-family: 'poppins'
+  }
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
