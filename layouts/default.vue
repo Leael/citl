@@ -54,7 +54,7 @@
         </div>
         <div>
         <a v-if="false" href="/" class="text-2xl font-bold text-white hover:text-blue-900">Home</a>
-        <a @click="logout_user" v-if="true" class="text-2xl font-bold text-white hover:text-blue-900 cursor-pointer">Logout</a>
+        <a @click="logout_user" v-if="true" class="text-2xl font-bold text-white hover:text-orange-500 cursor-pointer">Logout</a>
 
         </div>
       </div>      
@@ -94,6 +94,8 @@ export default {
       firebase.auth().signOut().then(function(){
         window.location.pathname = '/login'
         console.log("logout")
+      }).catch(function(err){
+        console.log(err.message)
       })
     }
   }

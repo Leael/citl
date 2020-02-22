@@ -13,14 +13,38 @@
         </div>
         <div class="w-full h-full">
             <div class="flex flex-row items-center justify-between mx-6 h-20 border-b border-gray-600">
-                <span class="text-4xl italic">Latest Activities</span>
+                <span class="text-4xl italic">Add Post</span>
                 <div class="mr-3">
-                    <input type="text" placeholder="Search.." class="bg-search shadow-sm rounded text-sm px-2 py-1">
-                    <button class="bg-search rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">Go</button>
+                    <button class="bg-search rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">Back</button>
                 </div>
             </div>
-            <div class="flex justify-end mx-6 mt-3">
+            <!-- <div class="flex justify-end mx-6 mt-3">
                 <button class="mr-3 bg-blue-300 rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Add New</button>
+            </div> -->
+            <div class="my-20 mx-8">
+                <form action="">
+                <div class="flex items-center mb-4">
+                    <span class="block text-gray-700 text-sm font-bold mr-12">Title:</span>
+                    <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                </div>
+                <div class="flex items-center">
+                    <span class="block text-gray-700 text-sm font-bold mr-12">Type:</span><div class="p-10">
+
+  <div class="dropdown inline-block relative">
+    <button class="text-gray-700 py-2 px-4 border shadow rounded inline-flex items-center">
+      <span class="mr-1">Dropdown</span>
+      <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+    </button>
+    <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+      <li class=""><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">1</a></li>
+      <li class=""><a class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">2</a></li>
+      <li class=""><a class="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">3</a></li>
+    </ul>
+  </div>
+
+</div>
+                </div>
+                </form>
             </div>
         </div>
 
@@ -34,5 +58,7 @@ export default {
 </script>
 
 <style>
-
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 </style>
