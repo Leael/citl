@@ -8,30 +8,31 @@
             <div class="mt-6 flex flex-col text-white w-full pl-3">
                 <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Home</nuxt-link>
                 <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Events</nuxt-link>
-                <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Video</nuxt-link>
+                <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Videos</nuxt-link>
             </div>
         </div>
         <div class="w-full h-full">
             <div class="flex flex-row items-center justify-between mx-6 h-20 border-b border-gray-600">
                 <span class="text-4xl italic">Add Post</span>
                 <div class="mr-3">
-                    <button class="bg-search rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">Back</button>
+                    <nuxt-link to="/home_admin"><button class="bg-search rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">Back</button></nuxt-link>
                 </div>
             </div>
             <!-- <div class="flex justify-end mx-6 mt-3">
                 <button class="mr-3 bg-blue-300 rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Add New</button>
             </div> -->
             <div class="my-20 mx-8">
-                <form action="">
-                <div class="flex items-center mb-4">
+                <form action="" class="hadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3">
+                <div class="flex items-center mb-4 justify-between">
                     <span class="block text-gray-700 text-sm font-bold mr-12">Title:</span>
-                    <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                    <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64" type="text">
                 </div>
-                <div class="flex items-center">
-                    <span class="block text-gray-700 text-sm font-bold mr-12">Type:</span><div class="p-10">
+                <div class="flex items-center mb-4">
+                    <span class="block text-gray-700 text-sm font-bold mr-12">Type:</span>
+                    <!-- <div class="p-10"> -->
 
-  <div class="dropdown inline-block relative">
-    <button class="text-gray-700 py-2 px-4 border shadow rounded inline-flex items-center">
+  <!-- <div class="dropdown inline-block relative ml-24">
+    <button class="text-gray-700 py-2 px-4 border shadow rounded inline-flex flex items-center">
       <span class="mr-1">Dropdown</span>
       <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
     </button>
@@ -42,8 +43,22 @@
     </ul>
   </div>
 
-</div>
+</div> -->
+
                 </div>
+
+                <div class="flex items-center mb-4 justify-between">
+                  <span class="block text-gray-700 text-sm font-bold mr-12">Media:</span>
+                  <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64" type="file">
+                  <!-- <nuxt-link to=""><button class="bg-search rounded-md text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">+Add Files</button></nuxt-link> -->
+                </div>
+                <div class="flex items-center mb-4 justify-between">
+                  <span class="block text-gray-700 text-sm font-bold mr-12">Description:</span>
+                  <textarea class=" resize shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 w-64"></textarea>
+                </div>
+                <div class="flex justify-end">
+                  <nuxt-link to=""><button class="mr-3 bg-blue-300 rounded-md text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Submit</button></nuxt-link>
+                </div>                
                 </form>
             </div>
         </div>
@@ -58,7 +73,25 @@ export default {
 </script>
 
 <style>
-.dropdown:hover .dropdown-menu {
+/* .dropdown:hover .dropdown-menu {
   display: block;
+} */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
 }
 </style>

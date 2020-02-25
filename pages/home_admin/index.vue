@@ -8,7 +8,7 @@
             <div class="mt-6 flex flex-col text-white w-full pl-3">
                 <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Home</nuxt-link>
                 <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Events</nuxt-link>
-                <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Video</nuxt-link>
+                <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Videos</nuxt-link>
             </div>
         </div>
         <div class="w-full h-full">
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="flex justify-end mx-6 mt-3">
-                <button class="mr-3 bg-blue-300 rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Add New</button>
+                <nuxt-link to="/create"><button class="mr-3 bg-blue-300 rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Add New</button></nuxt-link>
             </div>
         </div>
 
