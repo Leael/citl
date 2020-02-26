@@ -4,7 +4,7 @@
       <div class=" italic w-full h-16 bg-gray-900 text-3xl font-bold text-white flex items-center justify-between px-6">
         <div class="flex">
         <label for="menu-toggle" class="pt-2 pl-8"> 
-          <svg width="57" height="42" viewBox="0 0 57 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- <svg width="57" height="42" viewBox="0 0 57 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d)">
             <path d="M8 7H49" stroke="#C7C7C7" stroke-width="5"/>
             </g>
@@ -43,7 +43,7 @@
             <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
             </filter>
             </defs>
-          </svg>
+          </svg> -->
         </label>
         <span class="pl-6">
           <span class=" text-blue-700">C</span>ENTER FOR 

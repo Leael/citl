@@ -14,17 +14,17 @@
                   <div class="flex justify-end mt-1">
                     <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4">
                       <div class="mb-4 flex items-center justify-between">
-                        <span class="block text-gray-700 text-sm font-bold mr-12">Name:</span>
-                        <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text">
+                        <span class="block text-gray-700 text-sm font-bold mr-12">Display Name:</span>
+                        <input v-model="display_name" class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text">
                       </div>
                       <div class="mb-4 flex items-center justify-between">  
                         <span class="block text-gray-700 text-sm font-bold mr-12">Email:</span>
                         <input v-model="email" class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text">
                       </div>
-                      <div class="mb-4 flex items-center justify-between">
+                      <!-- <div class="mb-4 flex items-center justify-between">
                         <span class="block text-gray-700 text-sm font-bold mr-12">Username:</span>
                         <input class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
-                      </div>
+                      </div> -->
                       <div class="mb-4 flex items-center justify-between">
                         <span class="block text-gray-700 text-sm font-bold mr-12">Password:</span>
                         <input v-model="password" class="shadow appearance-none border rounded w-48 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password1" type="password">
@@ -36,7 +36,7 @@
                       <div class="flex flex-row">
                         <p class="txt">Already have an account?  </p><nuxt-link to="/login" class="reg txt1">Login</nuxt-link>
                       </div>
-                      <div class="flex items-center justify-between">
+                      <div @click="test" class="flex items-center justify-between">
                         <button @click="create_user" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                           Create Account
                         </button>
@@ -62,6 +62,7 @@ export default {
   data() {
     return {
       show: false,
+      display_name: "",
       email: "",
       password: ""
     }
@@ -77,19 +78,30 @@ export default {
         }
       })
     },
+    test() {
+      console.log(this.display_name)
+    },
     create_user(){
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(function() {
+      let name = this.display_name
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(function(creds) {
         console.log("success")
+        creds.user.updateProfile({
+          displayName: name
+        }).then(function() {
+          console.log("create with displayname")
+          window.location.pathname="/home_admin"
+        })
+        
       }).catch(function(err){
         console.log(err.message);
       }
       )
     },
-    logout_user(){
-      firebase.auth().signOut().then(function(){
-        console.log("nalogout na")
-      })
-    }
+    // logout_user(){
+    //   firebase.auth().signOut().then(function(){
+    //     console.log("nalogout na")
+    //   })
+    // }
   },
   created(){
     this.check_user();
