@@ -17,7 +17,7 @@
                     <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="/seminar" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Seminar</nuxt-link></ul>
 
                     <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="/activities" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Activity</nuxt-link></ul>
-
+<!--  -->
                 </li>
 
                 
