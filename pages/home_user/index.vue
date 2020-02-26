@@ -6,11 +6,23 @@
             </div>
             <span class="italic text-base text-white mt-6">WELCOME</span>
             <div class="mt-6 flex flex-col text-white w-full pl-3">
-                <li class=" flex flex-col text-white w-full pl-3"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Home</nuxt-link></li>
-                <li class="flex flex-col text-white w-full pl-3"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Events</nuxt-link></li>
-                <ul class="items-center absolute border border-t-0 rounded-b-lg p-1 bg-white p-2 invisible group-hover:visible w-full">
-                    <li class="flex flex-col text-white w-full pl-3"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Events</nuxt-link></li>
-                </ul>
+
+                <li class=" flex flex-col text-white w-full pl-3">
+                    <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Home</nuxt-link></li>
+
+                <li @click="isOpen = !isOpen" class="flex flex-col text-white w-full pl-3">
+                <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Events</nuxt-link>
+                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Announcements</nuxt-link></ul>
+
+                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Seminar</nuxt-link></ul>
+
+                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Activity</nuxt-link></ul>
+
+                </li>
+
+                
+
+
                 <li class="flex flex-col text-white w-full pl-3"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Video</nuxt-link></li>
             </div>
         </div>
@@ -31,6 +43,11 @@
 <script>
 export default {
   layout: "user",
+  data() {
+      return {
+          isOpen : false
+      }
+  }
 
 }
 </script>
