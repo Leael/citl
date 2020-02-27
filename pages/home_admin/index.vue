@@ -43,7 +43,8 @@ export default {
     data() {
         return {
             display: '',
-            show: false
+            show: false,
+            isOpen: false
         }
     },
 
