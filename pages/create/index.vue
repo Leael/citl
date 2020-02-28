@@ -32,20 +32,26 @@
                 <button class="mr-3 bg-blue-300 rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Add New</button>
             </div> -->
             <div class="my-20 mx-8 flex">
-                <form action="" class="px-8 pt-6 pb-8 mb-4 w-1/2">
+                <form action="#" @submit.prevent="validate" class="px-8 pt-6 pb-8 mb-4 w-1/2">
                 <div class="flex items-center mb-4 justify-between">
                     <span class="block text-gray-700 text-sm font-bold mr-12">Title:</span>
+                    <div class="flex flex-col">
                     <input v-model="title" v-validate="'required'" name="title" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64" type="text">
-                     <!-- <span class=" block text-gray-700 text-sm font-bold mr-12">{{ errors.first('title') }}</span> -->
+                    <span class="mt-1 text-xs font-medium text-red-500">{{ errors.first('title') }}</span>
+                    </div>
                 </div>
                 <div class="flex items-center mb-4 justify-between">
                     <span class="block text-gray-700 text-sm font-bold mr-12">Type:</span>
-                    <select v-model="selected" class="shadow  border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64">
+                    <select name="type" v-model="type" class="shadow  border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64">
+                        <option v-for="type in types" :key="type">{{type}}</option>
+                    </select>
+
+                    <!-- <select v-model="selected" class="shadow  border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64">
                     <option>Please select one</option>
                     <option>Announcement</option>
                     <option>Seminar</option>
                     <option>Activity</option>
-                    </select>
+                    </select> -->
                 </div>
 
                 <div class="flex items-center mb-4 justify-between">
@@ -55,10 +61,13 @@
                 </div>
                 <div class="flex items-center mb-4 justify-between">
                   <span class="block text-gray-700 text-sm font-bold mr-12">Description:</span>
-                  <textarea v-model="description" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 w-64"></textarea>
+                  <div class="flex flex-col">
+                  <textarea v-model="description" v-validate="'desc'" name="desc" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 w-64"></textarea>
+                  <span class="mt-1 text-xs font-medium text-red-500">{{ errors.first('desc') }}</span>
+                  </div>
                 </div>
                 <div class="flex justify-end">
-                  <button @click.prevent="createPost" class="mr-3 bg-blue-300 rounded-md text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Submit</button>
+                  <button type="submit" class="mr-3 bg-blue-300 rounded-md text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Submit</button>
                 </div>                
                 </form>
             </div>
@@ -74,14 +83,16 @@ import 'firebase/database'
 export default {
   data() {
         return {
-        selected: "Please select one",
+        // selected: "Please select one",
         title:"",
         media: "",
         description: "",
         show: '',
         display: '',
+        type: "Please select one",
         show: false,
-        isOpen: false
+        isOpen: false,
+        types:['Please select one','Announcement','Seminar','Acivities'],
         }
     },
 
@@ -99,12 +110,12 @@ export default {
     methods: {
         createPost() {
             const postRef = firebase.database().ref('post/');
-            if (this.title=="",this.selected=="Please select one",this.description=="") {
+            if (this.title==="" || this.type==="Please select one" || this.description==="") {
                 console.log('gago')                
             }else{
                 postRef.push({
                 title: this.title,
-                type: this.selected,
+                type: this.type,
                 description: this.description   
             }).then(() => {
                 this.submitted=true
@@ -115,6 +126,17 @@ export default {
             })
             }
             
+        },
+        validate(){
+            this.$validator.validateAll().then(result => {
+        if (result) {
+          console.log("No error");
+          this.createPost();
+        } else {
+          console.log("Errored");
+        }
+      });
+
         }
     }
 }
