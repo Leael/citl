@@ -62,8 +62,8 @@
                 <div class="flex items-center mb-4 justify-between">
                   <span class="block text-gray-700 text-sm font-bold mr-12">Description:</span>
                   <div class="flex flex-col">
-                  <textarea v-model="description" v-validate="'desc'" name="desc" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 w-64"></textarea>
-                  <span class="mt-1 text-xs font-medium text-red-500">{{ errors.first('desc') }}</span>
+                  <textarea v-model="description"  class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-32 w-64"></textarea>
+                  <!-- <span class="mt-1 text-xs font-medium text-red-500">{{ errors.first('desc') }}</span> -->
                   </div>
                 </div>
                 <div class="flex justify-end">
@@ -111,7 +111,8 @@ export default {
         createPost() {
             const postRef = firebase.database().ref('post/');
             if (this.title==="" || this.type==="Please select one" || this.description==="") {
-                console.log('gago')                
+                console.log('gago'),   
+                alert('All fields must be filled out')
             }else{
                 postRef.push({
                 title: this.title,

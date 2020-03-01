@@ -13,8 +13,12 @@
       <select v-model="blog.author">
         <option v-for="author in authors" :key="author">{{author}}</option>
       </select>
-      <button @click.prevent="createPost">add</button>
+      <input type="file">
+      <button @click.prevent="getPost">add</button>
   </form>
+    </div>
+    <div>
+      <pre id="posts"></pre>
     </div>
   <div v-if="submitted  ">
       <h3>  thanks for adding</h3>
@@ -37,12 +41,14 @@ export default {
                 author: ""
             },
             authors:['a','b','c'],
-            submitted: false
+            submitted: false,
+            file: '',
+            display: ''
         }
     },
     methods: {
         createPost() {
-            const postRef = firebase.database().ref('post/');
+            const postRef = firebase.database().ref('try/');
             postRef.push({
                 title: this.blog.title,
                 content: this.blog.content,
@@ -53,6 +59,32 @@ export default {
             }).catch(err => {
                 console.log(err.message)
             })
+        },
+//         createPost(){
+//             const ref = firebase.storage().ref();
+// const file = document.querySelector('#photo').files[0]
+// const name = (+new Date()) + '-' + file.name;
+// const metadata = {
+//   contentType: file.type
+// };
+// const task = ref.child(name).put(file, metadata);
+// task
+//   .then(snapshot => snapshot.ref.getDownloadURL())
+//   .then((url) => {
+//     console.log(url);
+//     document.querySelector('#someImageTagID').src = url;
+//   })
+//   .catch(console.error);
+//         },
+        getPost() {
+            const preObject = document.getElementById('posts');
+            const dbRefObject = firebase.database().ref().child('posts');
+           var d =  dbRefObject.on('value', snap => snap.forEach(item => {
+             preObject.innerText += JSON.stringify(item.val(), null, 3)
+           }));
+          // dbRefObject.on('value', snap => {
+          //   preObject.innerText = JSON.stringify(snap.val(), null, 3)
+          // });
         }
     }
 
