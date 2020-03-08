@@ -70,6 +70,13 @@
                   <button type="submit" class="mr-3 bg-blue-300 rounded-md text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Submit</button>
                 </div>                
                 </form>
+                <div class="px-8 pt-6 pb-8 mb-4 w-1/2">
+                    <h3 class="block text-2xl text-gray-700 font-bold mr-12 mb-4"> Post Preview</h3>
+                    <p class="block text-gray-700 font-bold mr-12 mb-4">Title: {{title}}</p>
+                    <p class="block text-gray-700 font-bold mr-12 mb-4">Type: {{type}}</p>
+                    <p class="block text-gray-700 font-bold mr-12 mb-4">Description: </p>
+                    <p>{{description}}</p>
+                </div>
             </div>
         </div>
 

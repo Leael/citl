@@ -56,7 +56,7 @@
                         Login
                       </button>
                       <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                        Forgot Password?
+                        <nuxt-link to="/resetPassword" class="">Forgot Password?</nuxt-link>
                       </a>
                     </div>
                   </form>

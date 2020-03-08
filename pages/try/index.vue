@@ -17,9 +17,14 @@
       <button @click.prevent="getPost">add</button>
   </form>
     </div>
-    <div>
+    <ul id = "posts">
+      <div id="postsList">
+
+      </div>
+    </ul>
+    <!-- <div>
       <pre id="posts"></pre>
-    </div>
+    </div> -->
   <div v-if="submitted  ">
       <h3>  thanks for adding</h3>
   </div>
@@ -60,6 +65,44 @@ export default {
                 console.log(err.message)
             })
         },
+//         getP(){
+//            const dbRef = firebase.database().ref('posts');
+
+// const postssRef = dbRef.child('posts');
+// const postsListUI = document.getElementById("postsList");
+//         postsRef.on("child_added", snap => {
+
+// 	let posts = snap.val();
+
+// 	let $li = document.createElement("li");
+// 	$li.innerHTML = posts.name;
+// 	$li.setAttribute("child-key", snap.key);
+// 	$li.addEventListener("click", userClicked)
+// 	userListUI.append($li);
+
+// })
+//         },
+//         postsClicked(e) {
+//           const dbRef = firebase.database().ref('posts');
+
+// 	var postsID = e.target.getAttribute("child-key");
+
+// 	const postsRef = dbRef.child('posts/' + postsID);
+// 	const postsDetailUI = document.getElementById("postsDetail");
+
+// 	// postsDetailUI.innerHTML = ""
+
+// 	postsRef.on("child_added", snap => {
+
+
+// 		var $p = document.createElement("p");
+// 		$p.innerHTML = snap.key  + " - " +  snap.val()
+// 		postsDetailUI.append($p);
+
+
+//   })
+//         },
+       
 //         createPost(){
 //             const ref = firebase.storage().ref();
 // const file = document.querySelector('#photo').files[0]
@@ -75,16 +118,17 @@ export default {
 //     document.querySelector('#someImageTagID').src = url;
 //   })
 //   .catch(console.error);
-//         },
+        // },
         getPost() {
             const preObject = document.getElementById('posts');
             const dbRefObject = firebase.database().ref().child('posts');
            var d =  dbRefObject.on('value', snap => snap.forEach(item => {
              preObject.innerText += JSON.stringify(item.val(), null, 3)
            }));
-          // dbRefObject.on('value', snap => {
-          //   preObject.innerText = JSON.stringify(snap.val(), null, 3)
-          // });
+          dbRefObject.on('value', snap => {
+            preObject.innerText = JSON.stringify(snap.val(), null, 3)
+            // preObject.innerHTML = posts.title
+          });
         }
     }
 
