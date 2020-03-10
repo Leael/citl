@@ -116,7 +116,7 @@ export default {
     },
     methods: {
         createPost() {
-            const postRef = firebase.database().ref('post/');
+            const postRef = firebase.database().ref('posts/');
             if (this.title==="" || this.type==="Please select one" || this.description==="") {
                 console.log('gago'),   
                 alert('All fields must be filled out')
@@ -124,7 +124,8 @@ export default {
                 postRef.push({
                 title: this.title,
                 type: this.type,
-                description: this.description   
+                description: this.description, 
+                date: Date.now() 
             }).then(() => {
                 this.submitted=true
                 console.log('Posted!')

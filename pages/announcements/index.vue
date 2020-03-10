@@ -8,27 +8,27 @@
             <div class="mt-6 flex flex-col text-white w-full pl-3">
 
                 <li class=" flex flex-col text-white w-full pl-3">
-                    <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Home</nuxt-link></li>
+                    <nuxt-link to="/" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Home</nuxt-link></li>
 
                 <li @click="isOpen = !isOpen" class="flex flex-col text-white w-full pl-3">
                 <nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Events</nuxt-link>
-                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Announcements</nuxt-link></ul>
+                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="/announcements" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Announcements</nuxt-link></ul>
 
-                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Seminar</nuxt-link></ul>
+                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="/seminars" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Seminar</nuxt-link></ul>
 
-                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Activity</nuxt-link></ul>
+                    <ul class=" flex flex-col text-white w-full pl-3" v-if="isOpen"><nuxt-link to="/activities" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3" active-class="">Activity</nuxt-link></ul>
 
                 </li>
 
                 
 
 
-                <li class="flex flex-col text-white w-full pl-3"><nuxt-link to="#" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Video</nuxt-link></li>
+                <li class="flex flex-col text-white w-full pl-3"><nuxt-link to="/tutorials" class="reg hover:text-orange-500 hover:bg-gray-500 py-2 rounded-l-full pl-3">Tutorial Video</nuxt-link></li>
             </div>
         </div>
         <div class="w-full h-full">
             <div class="flex flex-row items-center justify-between mx-6 h-20 border-b border-gray-600">
-                <span class="text-4xl italic">Latest Activities</span>
+                <span class="text-4xl italic">Announcements</span>
                 <div class="mr-3">
                     <input type="text" placeholder="Search.." class="bg-search shadow-sm rounded text-sm px-2 py-1">
                     <button class="bg-search rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">Go</button>

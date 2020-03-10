@@ -24,12 +24,18 @@
             <div class="flex flex-row items-center justify-between mx-6 h-20 border-b border-gray-600">
                 <span class="text-4xl italic">Latest Activities</span>
                 <div class="mr-3">
-                    <input type="text" placeholder="Search.." class="bg-search shadow-sm rounded text-sm px-2 py-1">
-                    <button class="bg-search rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">Go</button>
+                    <input type="text" v-model="search" placeholder="Search.." class="bg-search shadow-sm rounded text-sm px-2 py-1">
                 </div>
             </div>
             <div class="flex justify-end mx-6 mt-3">
                 <nuxt-link to="/create"><button class="mr-3 bg-blue-300 rounded-md ml-5 text-sm px-2 py-1 border border-gray-600+ hover:bg-blue-500">Add New</button></nuxt-link>
+            </div>
+            <div class="flex flex-col text-black items-center mt-4">
+              <div class="flex flex-col rounded bg-green-100 border border-gray w-1/2 py-2 px-4 my-3" v-for="post in filteredPost" :key="post.content">
+                <span class="italic text-red-600">{{post.type}}</span>
+                <span class="font-bold">{{post.title}}</span>
+                <span>{{post.description}}</span>
+              </div>
             </div>
         </div>
 
@@ -44,7 +50,9 @@ export default {
         return {
             display: '',
             show: false,
-            isOpen: false
+            isOpen: false,
+            posts: [],
+            search: ''
         }
     },
 
@@ -57,9 +65,28 @@ export default {
             else{
                 window.location.pathname="/"
             }
-        })
+        });
+        const postRef = firebase.database().ref('posts');
+    postRef.once('value', snapshot => {
+      console.log(snapshot.val());
+      let allDataKeys = Object.keys(snapshot.val());
+      console.log(allDataKeys);
+      var data = [];
+      for(var i = 0; i < allDataKeys.length; i++){
+        data.push(snapshot.child(allDataKeys[i]).val());
+      }
+      this.posts = data.sort(date => {date.date}).reverse();
+    })
 
+    },
+    computed: {
+    filteredPost(){
+      
+      return this.posts.filter(post => {
+        return post.title.toLowerCase().includes(this.search.toLowerCase()) || post.description.toLowerCase().includes(this.search.toLowerCase())
+      })
     }
+  },
 
 }
 </script>
