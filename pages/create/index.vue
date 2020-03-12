@@ -55,6 +55,13 @@
                 </div>
 
                 <div class="flex items-center mb-4 justify-between">
+                    <span class="block text-gray-700 text-sm font-bold mr-12">Youtube Link:</span>
+                    <div class="flex flex-col">
+                    <input v-model="link" class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64" type="text">
+                    </div>
+                </div>
+
+                <div class="flex items-center mb-4 justify-between">
                   <span class="block text-gray-700 text-sm font-bold mr-12">Media:</span>
                   <input class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-64" type="file">
                   <!-- <nuxt-link to=""><button class="bg-search rounded-md text-sm px-2 py-1 border border-gray-600+ hover:bg-gray-500">+Add Files</button></nuxt-link> -->
@@ -72,8 +79,10 @@
                 </form>
                 <div class="px-8 pt-6 pb-8 mb-4 w-1/2">
                     <h3 class="block text-2xl text-gray-700 font-bold mr-12 mb-4"> Post Preview</h3>
-                    <p class="block text-gray-700 font-bold mr-12 mb-4">Title: {{title}}</p>
+                    <p class="block text-gray-700 font-bold mr-12 mb-4">Title: {{title}}</p>                    
                     <p class="block text-gray-700 font-bold mr-12 mb-4">Type: {{type}}</p>
+                    <p class="block text-gray-700 font-bold mr-12">Youtube Link: </p>
+                    <p class=" mb-4">{{link}}</p>
                     <p class="block text-gray-700 font-bold mr-12 mb-4">Description: </p>
                     <p>{{description}}</p>
                 </div>
@@ -92,6 +101,7 @@ export default {
         return {
         // selected: "Please select one",
         title:"",
+        link:"",
         media: "",
         description: "",
         show: '',
@@ -121,9 +131,12 @@ export default {
                 console.log('gago'),   
                 alert('All fields must be filled out')
             }else{
+                const videoUrl = this.link
+                const videoId = videoUrl.substr(videoUrl.indexOf('=') + 1, videoUrl.length)
                 postRef.push({
                 title: this.title,
                 type: this.type,
+                videoId: videoId,
                 description: this.description, 
                 date: Date.now() 
             }).then(() => {

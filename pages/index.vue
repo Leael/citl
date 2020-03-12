@@ -33,10 +33,11 @@
                     <input type="text" v-model="search" placeholder="Search.." class="bg-search shadow-sm rounded text-sm px-2 py-1">
                 </div>
             </div>
-            <div class="flex flex-col text-black items-center mt-4">
-              <div class="flex flex-col rounded bg-green-100 border border-gray w-1/2 py-2 px-4 my-3" v-for="post in filteredPost" :key="post.content">
+            <div class="flex flex-col text-black items-center mt-4 h-screen overflow-y-auto">
+              <div class="flex flex-col rounded bg-green-100 border border-gray w-360 py-2 px-4 my-3" v-for="post in filteredPost" :key="post.content">
                 <span class="italic text-red-600">{{post.type}}</span>
-                <span class="font-bold">{{post.title}}</span>
+                <span class="font-bold flex justify-center mb-1">{{post.title}}</span>
+                <span class="mb-4"><try v-if="post"  :videoId='post.videoId'></try></span>
                 <span>{{post.description}}</span>
               </div>
             </div>
@@ -51,9 +52,14 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
+import Try from '@/components/Try'
+
 
 export default {
   layout: "user",
+  components: {
+      Try
+    },
   data() {
       return {
           isOpen : false,

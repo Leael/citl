@@ -25,7 +25,10 @@ export default {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: ['~/plugins/firebase.js'],
+    plugins: [
+        '~/plugins/firebase.js',
+        { src: '@/plugins/youtube.js', ssr: false }
+    ],
     /*
      ** Nuxt.js dev-modules
      */
